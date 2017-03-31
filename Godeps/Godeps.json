@@ -1,0 +1,17 @@
+{
+	"ImportPath": "github.com/HeTaixiang/master",
+	"GoVersion": "go1.8",
+	"GodepVersion": "v75",
+	"Deps": [
+		{
+			"ImportPath": "github.com/emicklei/go-restful",
+			"Comment": "v1.2-54-g7c47e25",
+			"Rev": "7c47e2558a0bbbaba9ecab06bc6681e73028a28a"
+		},
+		{
+			"ImportPath": "github.com/emicklei/go-restful/log",
+			"Comment": "v1.2-54-g7c47e25",
+			"Rev": "7c47e2558a0bbbaba9ecab06bc6681e73028a28a"
+		}
+	]
+}
