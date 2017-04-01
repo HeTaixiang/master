@@ -5,7 +5,7 @@ import (
 	"github.com/HeTaixiang/master/factory"
 )
 func init() {
-	RegisterServiceFactory(func(container *restful.Container) {
+	factory.RegisterService("user", func(container restful.Container) {
 
 	})
 }
