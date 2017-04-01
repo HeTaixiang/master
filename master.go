@@ -13,7 +13,7 @@ func main() {
 	for service := range factory.GetServices() {
 		service(container)
 	}
-	server := &http.Server{":8080", container}
+	server := &http.Server{Addr:":8080", Handler:container}
 	glog.Fatal(server.ListenAndServe())
 
 }
