@@ -3,7 +3,7 @@ package factory
 import (
 	"github.com/emicklei/go-restful"
 	"sync"
-	"k8s.io/contrib/diurnal/Godeps/_workspace/src/github.com/golang/glog"
+	"github.com/golang/glog"
 )
 
 type Factory func(container *restful.Container)
