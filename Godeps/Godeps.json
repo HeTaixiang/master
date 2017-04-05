@@ -1,7 +1,7 @@
 {
 	"ImportPath": "github.com/HeTaixiang/master",
-	"GoVersion": "go1.8",
-	"GodepVersion": "v75",
+	"GoVersion": "go1.7",
+	"GodepVersion": "v74",
 	"Deps": [
 		{
 			"ImportPath": "github.com/emicklei/go-restful",

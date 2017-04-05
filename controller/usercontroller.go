@@ -2,12 +2,12 @@ package controller
 
 import (
 	"github.com/emicklei/go-restful"
-	factory "github.com/HeTaixiang/master/factory"
-	"github.com/emicklei/go-restful/log"
+	"github.com/HeTaixiang/master/factory"
+	"github.com/golang/glog"
 )
 func init() {
-	factory.RegisterServiceFactory(func(container *restful.Container) {
-		log.Printf("callback register services")
+	factory.RegisterService("/users", func(container *restful.Container) {
+		glog.V(1).Info("call back register server")
 		service := new(restful.WebService)
 		service.Path("/users").Doc("manager user").Consumes(restful.MIME_JSON).Produces(restful.MIME_JSON)
 		service.Route(service.GET("/{userid}").To(func(request *restful.Request, response *restful.Response) {
