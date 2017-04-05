@@ -8,5 +8,5 @@ type Services []RegisterServiceFn
 var S = make(Services, 0)
 
 func RegisterServiceFactory(service RegisterServiceFn)  {
-	append(S, service)
+	S = append(S, service)
 }
