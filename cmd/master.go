@@ -4,7 +4,7 @@ import (
 	"flag"
 	"net/http"
 
-	_ "github.com/HeTaixiang/master/controller"
+	_ "github.com/HeTaixiang/master/controller/module"
 	factory "github.com/HeTaixiang/master/factory"
 	"github.com/emicklei/go-restful"
 	"github.com/golang/glog"
