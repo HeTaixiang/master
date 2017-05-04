@@ -29,7 +29,7 @@ func GetSessionManager() SessionInterface {
 	mux.Lock()
 	defer mux.Unlock()
 	if s == nil {
-		config, err := utils.ReadToConfig("../db.json")
+		config, err := utils.ReadToConfig("/Users/andy/.GOPATH/src/github.com/HeTaixiang/master/db.json")
 		if err != nil {
 			panic("read db config failure !")
 		}
