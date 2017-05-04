@@ -37,9 +37,9 @@ type moduleManager struct {
 }
 
 func (manager *moduleManager) Get() ([]*controller.Module, error) {
-	var modules []*controller.Module
+	modules := make([]*controller.Module, 0)
 	err := manager.session.ExecuteFor(moduleName, func(c *mgo.Collection) error {
-		return c.Find(nil).All(modules)
+		return c.Find(nil).All(&modules)
 	})
 	if err != nil {
 		return nil, err
@@ -48,18 +48,18 @@ func (manager *moduleManager) Get() ([]*controller.Module, error) {
 }
 
 func (manager *moduleManager) GetByID(ID string) (*controller.Module, error) {
-	var module *controller.Module
+	module := new(controller.Module)
 	err := manager.session.ExecuteFor(moduleName, func(c *mgo.Collection) error {
 		return c.FindId(bson.ObjectIdHex(ID)).One(module)
 	})
 	if err != nil {
-		return nil, err
+		return module, err
 	}
 	return module, nil
 }
 
 func (manager *moduleManager) GetSubModulesByModuleID(ID string) ([]*controller.SubModule, error) {
-	var module *controller.Module
+	module := new(controller.Module)
 	err := manager.session.ExecuteFor(moduleName, func(c *mgo.Collection) error {
 		return c.FindId(bson.ObjectIdHex(ID)).One(module)
 	})

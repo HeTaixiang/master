@@ -22,6 +22,8 @@ func ReadToConfig(path string) (*DBConfig, error) {
 	var configPath string
 	if len(path) == 0 {
 		configPath = DefaultPath
+	} else if _, err := os.Stat(configPath); err != nil {
+		configPath = DefaultPath
 	} else {
 		configPath = path
 	}

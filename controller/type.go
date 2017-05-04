@@ -36,7 +36,7 @@ type Menu struct {
 	// Item
 	Item `json:",inline"`
 	// MenuItems subMenu
-	MenuItems []*MenuItem `json:"menuItems"`
+	MenuItems []MenuItem `json:"menuItems"`
 }
 
 // MenuItem used for navigation

@@ -1,6 +1,6 @@
 {
     "url" : "127.0.0.1:27017",
     "db" : "product",
-    "username" : "product",
+    "username" : "root",
     "password" : "123456"
 }

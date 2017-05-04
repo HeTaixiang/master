@@ -19,6 +19,28 @@ type SessionInterface interface {
 	ExecuteFor(collectionName string, processFn ProcessFn) error
 }
 
+var (
+	mux sync.Mutex
+	s   SessionInterface
+)
+
+// GetSessionManager init and get the single instance of SessionManager
+func GetSessionManager() SessionInterface {
+	mux.Lock()
+	defer mux.Unlock()
+	if s == nil {
+		config, err := utils.ReadToConfig("../db.json")
+		if err != nil {
+			panic("read db config failure !")
+		}
+		s, err = NewManager(config)
+		if err != nil {
+			panic("create db manager failure !")
+		}
+	}
+	return s
+}
+
 type sessionManager struct {
 	sessionMux *sync.Mutex
 	config     *utils.DBConfig

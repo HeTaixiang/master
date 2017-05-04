@@ -1,6 +1,7 @@
 package module
 
 import (
+	"github.com/HeTaixiang/master/db"
 	"github.com/HeTaixiang/master/factory"
 	"github.com/emicklei/go-restful"
 	"github.com/golang/glog"
@@ -14,7 +15,13 @@ func init() {
 		defer container.Add(service)
 
 		service.Route(service.GET("/").To(func(request *restful.Request, response *restful.Response) {
-			response.WriteAsJson([]string{"key", "value"})
+			moduleManager := NewManager(db.GetSessionManager())
+			modules, err := moduleManager.Get()
+			if err != nil {
+				//TODO:
+
+			}
+			response.WriteAsJson(modules)
 		}))
 
 	})
