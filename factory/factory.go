@@ -8,9 +8,10 @@ import (
 )
 
 // Factory is type of the webservice register factory function
-type Factory func(container *restful.Container)
+type Factory func(service *restful.WebService)
 
 var (
+	container    = restful.NewContainer()
 	serviceMutex sync.Mutex
 	services     = make(map[string]Factory)
 )
@@ -36,4 +37,14 @@ func GetServices() []Factory {
 		wsServices = append(wsServices, s)
 	}
 	return wsServices
+}
+
+// NewContainer add WebService and return restful.Container
+func NewContainer() *restful.Container {
+	for _, service := range GetServices() {
+		s := new(restful.WebService)
+		service(s)
+		container.Add(s)
+	}
+	return container
 }
